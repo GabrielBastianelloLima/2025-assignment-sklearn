@@ -167,6 +167,7 @@ class MonthlySplit(BaseCrossValidator):
         self.time_col = time_col
 
     def __repr__(self):
+        """Return the string representation of the splitter."""
         return f"MonthlySplit(time_col='{self.time_col}')"
 
     def _get_time_series(self, X):
