@@ -111,7 +111,6 @@ class KNearestNeighbors(ClassifierMixin, BaseEstimator):
         y : ndarray, shape (n_test_samples,)
             Predicted class labels for each test data sample.
         """
-
         check_is_fitted(self,
                         attributes=["X_", "y_", "classes_"])
         X = validate_data(self, X, reset=False, ensure_2d=True,
@@ -163,6 +162,7 @@ class MonthlySplit(BaseCrossValidator):
         for which this column is not a datetime, it will raise a ValueError.
         To use the index as column just set `time_col` to `'index'`.
     """
+
     def __init__(self, time_col='index'):  # noqa: D107
         self.time_col = time_col
 
@@ -202,7 +202,6 @@ class MonthlySplit(BaseCrossValidator):
         n_splits : int
             The number of splits.
         """
-
         t = self._get_time_series(X)
         months = t.dt.to_period("M")
         return months.nunique() - 1
@@ -227,7 +226,6 @@ class MonthlySplit(BaseCrossValidator):
         idx_test : ndarray
             The testing set indices for that split.
         """
-
         t = self._get_time_series(X)
 
         order = np.argsort(t.values)
